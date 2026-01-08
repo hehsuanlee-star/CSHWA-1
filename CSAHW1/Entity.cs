@@ -15,25 +15,30 @@ namespace CSAHW1
         public virtual int mp { get; set; }
         public virtual int atk { get; set; }
 
-        //self-referential generic
-        public Func<Entity, int> Act;
+        private static readonly Random rand = new Random();
 
-        // Polymorphic attack method
-        public virtual int NormalAttack(Entity target)
+        //self-referential generic
+        public Func<Entity, int> UseAttack;
+        public Func<Entity, int> UseSkill;
+        public Func<Entity, int, int> TakeDamage;
+
+        //Dice Roll
+        public int DiceRoll()
         {
-            if (Act != null)
-            {
-                int amount;
-                amount = Act(target);
-                return amount;
-            }
-            else
-            {
-                Console.WriteLine($"no action assigned!");
-                return 0;
-            }
+            Console.WriteLine("Press Any Key to Roll Dice.");
+            Console.ReadLine();
+            int result = rand.Next(1, 7);
+            Console.WriteLine($"You Rolled {result}!");
+            Console.ReadLine();
+            return result;
         }
-        
+
+        public int EnemyRoll(Entity Roller)
+        {
+            int result = rand.Next(1, 7);
+            Console.WriteLine($"{Roller.name} Rolled {result}!");
+            return result;
+        }
 
     }
 }

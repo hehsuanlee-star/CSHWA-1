@@ -18,6 +18,8 @@ namespace CSAHW1.MyMonsters
         private int maxHP = 100;
         private int maxMP = 100;
         private int baseATK = 10;
+        private string _damageType;
+        public string damageType { get => _damageType; set => _damageType = value;}
         public override int id { get => _id; }
         public override string name { get => _name; }
         public string tag { get => _tag; set => _tag = value; }
@@ -32,13 +34,15 @@ namespace CSAHW1.MyMonsters
             _hp = maxHP;
             _mp = maxMP;
             _atk = baseATK;
-            Act = NormalAttack;
+            _name = "Angel";
+            _tag = "Divine";
         }
 
         // Class-Specific Methods
-       
-        public override int NormalAttack(Entity target)
+        // Attack Methods
+        public int NormalAttack(Entity target)
         {
+            _damageType = "Physical";
             int amount = atk;
             if (amount < 0) { amount = 0; }
             target.hp -= amount;
@@ -46,17 +50,29 @@ namespace CSAHW1.MyMonsters
         }
         public int DivineStrike(Entity target)
         {
+            _damageType = "Divine";
             int amount = atk * 2;
             if (amount < 0) { amount = 0; }
             target.hp -= amount;
             return amount;
         }
 
+        // Skills
         public int DivineHeal(Entity target)
         {
-            int amount = 10;
+            int amount = 20;
             if (amount < 0) { amount = 0; }
             target.hp += amount;
+            return amount;
+        }
+        public override void UseRollSkill() 
+        {
+            UseSkill += DivineIntervention;
+        }
+        public int DivineIntervention(Entity target)
+        {
+            UseSkill -= DivineIntervention;
+            int amount = 3;
             return amount;
         }
     }

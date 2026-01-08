@@ -11,12 +11,7 @@ namespace CSAHW1.MyMonsters
 {
     internal abstract class Monster : Entity
     {
-        public abstract override int NormalAttack(Entity target);
-
-        public Monster()
-        {
-            Act = NormalAttack;
-        }
+        public virtual void UseRollSkill() { }
     }
     internal class MonsterManager
     { 
