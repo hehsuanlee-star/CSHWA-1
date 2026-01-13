@@ -68,6 +68,16 @@ namespace CSAHW1.MyMonsters
             }
         }
 
+        public override void UseNormalAttack()
+        {
+            UseAttack += NormalAttack;
+        }
+
+        public override void UseSpecialAttack()
+        {
+            UseAttack += NecroAttack;
+        }
+
         //Skills
         public int NecroRevive(Entity target)
         {

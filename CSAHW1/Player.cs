@@ -11,6 +11,11 @@ namespace CSAHW1
     internal abstract class Player : Entity
     {
         public virtual void UseRollSkill() { }
+        public virtual void UseNormalAttack() { }
+        public virtual void UseSpecialAttack() { }
+
+        public virtual void UseClassSkill() { }
+
     }
 
     internal class Paladin : Player, IDivinity
@@ -50,6 +55,7 @@ namespace CSAHW1
             int amount = atk;
             if (amount < 0) { amount = 0; }
             target.hp -= amount;
+            UseAttack -= NormalAttack;
             return amount;
         }
         public int DivineStrike(Entity target)
@@ -58,12 +64,28 @@ namespace CSAHW1
             int amount = atk * 2;
             if (amount < 0) { amount = 0; }
             target.hp -= amount;
+            UseAttack -= DivineStrike;
             return amount;
         }
 
+        public override void UseNormalAttack()
+        {
+            UseAttack += NormalAttack;
+        }
+
+        public override void UseSpecialAttack()
+        {
+            UseAttack += DivineStrike;
+        }
         // Skills
+
+        public override void UseClassSkill()
+        {
+            UseSkill += DivineHeal;
+        }
         public int DivineHeal(Entity target)
         {
+            UseSkill -= DivineHeal;
             int amount = 20;
             if (amount < 0) { amount = 0; }
             target.hp += amount;
@@ -120,11 +142,13 @@ namespace CSAHW1
             int amount = atk;
             if (amount < 0) { amount = 0; }
             target.hp -= amount;
+            UseAttack -= NormalAttack;
             return amount;
         }
 
         public int NecroAttack(Entity target)
         {
+            UseAttack -= NecroAttack;
             if (mp >= 50)
             {
                 _damageType = "Necrotic";
@@ -144,6 +168,7 @@ namespace CSAHW1
         //Skills
         public int NecroRevive(Entity target)
         {
+            UseSkill -= NecroRevive;
             if (target.hp <= 0)
             {
                 target.hp = maxHP;
@@ -157,6 +182,10 @@ namespace CSAHW1
             }
         }
 
+        public override void UseClassSkill()
+        {
+            UseSkill += NecroRevive;
+        }
         public override void UseRollSkill()
         {
             UseSkill += NecroticRoll;

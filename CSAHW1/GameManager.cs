@@ -6,11 +6,14 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reflection.Metadata.Ecma335;
+using System.Reflection.Metadata;
 
 namespace CSAHW1
 {
     internal class GameManager
     {
+        private static readonly Random rand = new Random();
         public Player player { get => _player ; set => _player = value; }
         private Player _player; 
         //init
@@ -63,11 +66,62 @@ namespace CSAHW1
             return player;
         }
 
-        //DiceRoll
-
         //Menu
-        public void ShowBattleMenu()
-        { 
+        public void ShowBattleMenu(Player player, Entity target)
+        {
+            bool validInput = false;
+            Console.WriteLine("1) Attack");
+            Console.WriteLine("2) Skill");
+            Console.WriteLine("3) Skip");
+            while (validInput == false)
+            {
+                string input = Console.ReadLine();
+                while (validInput == false)
+                {
+                    switch (input)
+                    {
+                        case "1":
+                            Console.Clear();
+                            Console.WriteLine("1) Normal Attack");
+                            Console.WriteLine("2) Special Attack");
+                            while (validInput == false)
+                            {
+                                string _input = Console.ReadLine();
+                                switch (_input)
+                                {
+                                    case "1":
+                                        Console.WriteLine("Use Normal Attack");
+                                        player.UseNormalAttack();
+                                        player.UseAttack(target);
+                                        validInput = true;
+                                        break;
+                                    case "2":
+                                        Console.WriteLine("Use Special Attack");
+                                        player.UseSpecialAttack();
+                                        player.UseAttack(target);
+                                        validInput = true;
+                                        break;
+                                    default:
+                                        Console.WriteLine("Invalid Input");
+                                        Console.ReadLine();
+                                        break;
+                                }
+                            }
+                            break;
+                        case "2":
+                            Console.Clear();
+                            Console.WriteLine("Use Skill.");
+                            player.UseClassSkill();
+                            player.UseSkill(player);
+                            break;
+                        default:
+                            Console.WriteLine("Invalid Input");
+                            Console.ReadLine();
+                            break;
+                    }
+                }
+            }
+
         }
         //BattleLoop
         public void StartBattle(ref Player Player, ref Monster Enemy)
@@ -79,9 +133,11 @@ namespace CSAHW1
         {
             int a = 0;
             int b = 0;
-            bool validInput = false;
-            Entity winner;
-            while (a == b)
+            Entity winner = Player;
+            while (true)
+            {
+                bool validInput = false;
+                while (a == b)
                 {
                     Console.WriteLine("Commence Dice Roll.");
                     a = Player.DiceRoll();
@@ -93,58 +149,59 @@ namespace CSAHW1
                         Console.Clear();
                     }
                 }
-
-            // Check Dice Altering
-            while (validInput == false)
-            {
-                Console.WriteLine("Use Skill to Alter Result? Y or N");
-                string input = Console.ReadLine().ToLower();
-                switch (input)
+                // Check Dice Altering
+                while (validInput == false)
                 {
-                    case "y":
-                        Player.UseRollSkill();
-                        a = Player.UseSkill(Player);
-                        Console.WriteLine($"You Rolled {a}");
-                        validInput = true;
-                        break;
-                    case "n":
-                        validInput = true;
-                        break;
-                    default:
-                        Console.WriteLine("Invalid input. Please type Y or N.");
-                        break;
+                    Console.WriteLine("Use Skill to Alter Result? Y or N");
+                    string input = Console.ReadLine().ToLower();
+                    switch (input)
+                    {
+                        case "y":
+                            Player.UseRollSkill();
+                            a = Player.UseSkill(Player);
+                            Console.WriteLine($"You Rolled {a}");
+                            validInput = true;
+                            break;
+                        case "n":
+                            validInput = true;
+                            break;
+                        default:
+                            Console.WriteLine("Invalid input. Please type Y or N.");
+                            break;
+                    }
                 }
-            }
+                // Check Enemy Dice Altering
+                int activationSeed = rand.Next(1, 100);
+                if (Enemy.mp >= 50 && a > b && activationSeed > 25)
+                {
+                    Enemy.UseRollSkill();
+                    b = Enemy.UseSkill(Enemy);
+                    Console.WriteLine("Enemy Used Skill.");
+                    Console.WriteLine($"{Enemy.name} Rolled {b}");
+                }
 
-            // Check Enemy Dice Altering
-            Random rand = new Random();
-            int activationSeed = rand.Next(1, 100);
-            if (Enemy.mp >= 50 && a>b && activationSeed > 25)
-            {
-                Enemy.UseRollSkill();
-                b = Enemy.UseSkill(Enemy);
-                Console.WriteLine("Enemy Used Skill.");
-                Console.WriteLine($"{Enemy.name} Rolled {b}");
-            }
+                // Calculate Result
+                if (a > b)
+                {
+                    winner = Player;
+                    Console.WriteLine($"{winner.name} wins");
+                    return winner;
+                }
+                else if (a < b)
+                {
+                    winner = Enemy;
+                    Console.WriteLine($"{winner.name} wins");
+                    return winner;
+                }
 
-            // Calculate Result
-            if (a > b)
-            {
-                winner = Player;
+                Console.WriteLine("No Winner. Roll Recommence.");
+                a = b = 0;
             }
-            else
-            {
-                winner = Enemy;
-            }
-            Console.WriteLine($"{winner.name} wins");
-            return winner;
         }
+        
         public void PlayerTurn()
         {
-            Console.ReadLine();
-            Console.Clear();
             Console.WriteLine("Player Turn:");
-            ShowBattleMenu();
         }
 
 

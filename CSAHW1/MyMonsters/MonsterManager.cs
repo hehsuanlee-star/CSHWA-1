@@ -12,6 +12,8 @@ namespace CSAHW1.MyMonsters
     internal abstract class Monster : Entity
     {
         public virtual void UseRollSkill() { }
+        public virtual void UseNormalAttack() { }
+        public virtual void UseSpecialAttack() {}
     }
     internal class MonsterManager
     { 
