@@ -1,0 +1,170 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Sam\\Desktop\\hw\\CSHWA-1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2508EFDC-5EB3-4719-96B8-E3AAF54D5A79}|CSAHW1\\CSAHW1.csproj|c:\\users\\sam\\desktop\\hw\\cshwa-1\\csahw1\\mymonsters\\zombie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2508EFDC-5EB3-4719-96B8-E3AAF54D5A79}|CSAHW1\\CSAHW1.csproj|solutionrelative:csahw1\\mymonsters\\zombie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2508EFDC-5EB3-4719-96B8-E3AAF54D5A79}|CSAHW1\\CSAHW1.csproj|c:\\users\\sam\\desktop\\hw\\cshwa-1\\csahw1\\mymonsters\\angel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2508EFDC-5EB3-4719-96B8-E3AAF54D5A79}|CSAHW1\\CSAHW1.csproj|solutionrelative:csahw1\\mymonsters\\angel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2508EFDC-5EB3-4719-96B8-E3AAF54D5A79}|CSAHW1\\CSAHW1.csproj|c:\\users\\sam\\desktop\\hw\\cshwa-1\\csahw1\\mymonsters\\monstermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2508EFDC-5EB3-4719-96B8-E3AAF54D5A79}|CSAHW1\\CSAHW1.csproj|solutionrelative:csahw1\\mymonsters\\monstermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2508EFDC-5EB3-4719-96B8-E3AAF54D5A79}|CSAHW1\\CSAHW1.csproj|c:\\users\\sam\\desktop\\hw\\cshwa-1\\csahw1\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2508EFDC-5EB3-4719-96B8-E3AAF54D5A79}|CSAHW1\\CSAHW1.csproj|solutionrelative:csahw1\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2508EFDC-5EB3-4719-96B8-E3AAF54D5A79}|CSAHW1\\CSAHW1.csproj|c:\\users\\sam\\desktop\\hw\\cshwa-1\\csahw1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2508EFDC-5EB3-4719-96B8-E3AAF54D5A79}|CSAHW1\\CSAHW1.csproj|solutionrelative:csahw1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2508EFDC-5EB3-4719-96B8-E3AAF54D5A79}|CSAHW1\\CSAHW1.csproj|c:\\users\\sam\\desktop\\hw\\cshwa-1\\csahw1\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2508EFDC-5EB3-4719-96B8-E3AAF54D5A79}|CSAHW1\\CSAHW1.csproj|solutionrelative:csahw1\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2508EFDC-5EB3-4719-96B8-E3AAF54D5A79}|CSAHW1\\CSAHW1.csproj|c:\\users\\sam\\desktop\\hw\\cshwa-1\\csahw1\\entity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2508EFDC-5EB3-4719-96B8-E3AAF54D5A79}|CSAHW1\\CSAHW1.csproj|solutionrelative:csahw1\\entity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2508EFDC-5EB3-4719-96B8-E3AAF54D5A79}|CSAHW1\\CSAHW1.csproj|c:\\users\\sam\\desktop\\hw\\cshwa-1\\csahw1\\myinterfaces\\idivinity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2508EFDC-5EB3-4719-96B8-E3AAF54D5A79}|CSAHW1\\CSAHW1.csproj|solutionrelative:csahw1\\myinterfaces\\idivinity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2508EFDC-5EB3-4719-96B8-E3AAF54D5A79}|CSAHW1\\CSAHW1.csproj|c:\\users\\sam\\desktop\\hw\\cshwa-1\\csahw1\\myinterfaces\\iundead.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2508EFDC-5EB3-4719-96B8-E3AAF54D5A79}|CSAHW1\\CSAHW1.csproj|solutionrelative:csahw1\\myinterfaces\\iundead.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "GameManager.cs",
+              "DocumentMoniker": "C:\\Users\\Sam\\Desktop\\hw\\CSHWA-1\\CSAHW1\\GameManager.cs",
+              "RelativeDocumentMoniker": "CSAHW1\\GameManager.cs",
+              "ToolTip": "C:\\Users\\Sam\\Desktop\\hw\\CSHWA-1\\CSAHW1\\GameManager.cs",
+              "RelativeToolTip": "CSAHW1\\GameManager.cs",
+              "ViewState": "AgIAAHAAAAAAAAAAAAAAAG0AAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-14T03:10:02.446Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Zombie.cs",
+              "DocumentMoniker": "C:\\Users\\Sam\\Desktop\\hw\\CSHWA-1\\CSAHW1\\MyMonsters\\Zombie.cs",
+              "RelativeDocumentMoniker": "CSAHW1\\MyMonsters\\Zombie.cs",
+              "ToolTip": "C:\\Users\\Sam\\Desktop\\hw\\CSHWA-1\\CSAHW1\\MyMonsters\\Zombie.cs",
+              "RelativeToolTip": "CSAHW1\\MyMonsters\\Zombie.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAAD4AAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-14T03:10:02.533Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Angel.cs",
+              "DocumentMoniker": "C:\\Users\\Sam\\Desktop\\hw\\CSHWA-1\\CSAHW1\\MyMonsters\\Angel.cs",
+              "RelativeDocumentMoniker": "CSAHW1\\MyMonsters\\Angel.cs",
+              "ToolTip": "C:\\Users\\Sam\\Desktop\\hw\\CSHWA-1\\CSAHW1\\MyMonsters\\Angel.cs",
+              "RelativeToolTip": "CSAHW1\\MyMonsters\\Angel.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAAADkAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-14T03:10:02.535Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Entity.cs",
+              "DocumentMoniker": "C:\\Users\\Sam\\Desktop\\hw\\CSHWA-1\\CSAHW1\\Entity.cs",
+              "RelativeDocumentMoniker": "CSAHW1\\Entity.cs",
+              "ToolTip": "C:\\Users\\Sam\\Desktop\\hw\\CSHWA-1\\CSAHW1\\Entity.cs",
+              "RelativeToolTip": "CSAHW1\\Entity.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-14T03:10:02.536Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "IDivinity.cs",
+              "DocumentMoniker": "C:\\Users\\Sam\\Desktop\\hw\\CSHWA-1\\CSAHW1\\MyInterfaces\\IDivinity.cs",
+              "RelativeDocumentMoniker": "CSAHW1\\MyInterfaces\\IDivinity.cs",
+              "ToolTip": "C:\\Users\\Sam\\Desktop\\hw\\CSHWA-1\\CSAHW1\\MyInterfaces\\IDivinity.cs",
+              "RelativeToolTip": "CSAHW1\\MyInterfaces\\IDivinity.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAA1AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-14T03:10:02.537Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "IUndead.cs",
+              "DocumentMoniker": "C:\\Users\\Sam\\Desktop\\hw\\CSHWA-1\\CSAHW1\\MyInterfaces\\IUndead.cs",
+              "RelativeDocumentMoniker": "CSAHW1\\MyInterfaces\\IUndead.cs",
+              "ToolTip": "C:\\Users\\Sam\\Desktop\\hw\\CSHWA-1\\CSAHW1\\MyInterfaces\\IUndead.cs",
+              "RelativeToolTip": "CSAHW1\\MyInterfaces\\IUndead.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-14T03:10:02.538Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Player.cs",
+              "DocumentMoniker": "C:\\Users\\Sam\\Desktop\\hw\\CSHWA-1\\CSAHW1\\Player.cs",
+              "RelativeDocumentMoniker": "CSAHW1\\Player.cs",
+              "ToolTip": "C:\\Users\\Sam\\Desktop\\hw\\CSHWA-1\\CSAHW1\\Player.cs",
+              "RelativeToolTip": "CSAHW1\\Player.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAAADwAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-14T03:10:02.539Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MonsterManager.cs",
+              "DocumentMoniker": "C:\\Users\\Sam\\Desktop\\hw\\CSHWA-1\\CSAHW1\\MyMonsters\\MonsterManager.cs",
+              "RelativeDocumentMoniker": "CSAHW1\\MyMonsters\\MonsterManager.cs",
+              "ToolTip": "C:\\Users\\Sam\\Desktop\\hw\\CSHWA-1\\CSAHW1\\MyMonsters\\MonsterManager.cs",
+              "RelativeToolTip": "CSAHW1\\MyMonsters\\MonsterManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-14T03:10:02.541Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Sam\\Desktop\\hw\\CSHWA-1\\CSAHW1\\Program.cs",
+              "RelativeDocumentMoniker": "CSAHW1\\Program.cs",
+              "ToolTip": "C:\\Users\\Sam\\Desktop\\hw\\CSHWA-1\\CSAHW1\\Program.cs",
+              "RelativeToolTip": "CSAHW1\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-14T03:10:02.542Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

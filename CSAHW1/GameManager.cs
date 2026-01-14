@@ -67,61 +67,78 @@ namespace CSAHW1
         }
 
         //Menu
+        void HandleAttackMenu(Player player, Entity target)
+        {
+            bool validAttack = false;
+
+            Console.Clear();
+            Console.WriteLine("1) Normal Attack");
+            Console.WriteLine("2) Special Attack");
+
+            while (!validAttack)
+            {
+                string input = Console.ReadLine();
+
+                switch (input)
+                {
+                    case "1":
+                        Console.WriteLine("Used Normal Attack");
+                        player.UseNormalAttack();
+                        player.UseAttack(target);
+                        validAttack = true;
+                        break;
+
+                    case "2":
+                        Console.WriteLine("Used Special Attack");
+                        player.UseSpecialAttack();
+                        player.UseAttack(target);
+                        validAttack = true;
+                        break;
+
+                    default:
+                        Console.WriteLine("Invalid Input");
+                        Console.ReadLine();
+                        break;
+                }
+            }
+        }
         public void ShowBattleMenu(Player player, Entity target)
         {
             bool validInput = false;
             Console.WriteLine("1) Attack");
             Console.WriteLine("2) Skill");
             Console.WriteLine("3) Skip");
-            while (validInput == false)
+            while (!validInput)
             {
                 string input = Console.ReadLine();
-                while (validInput == false)
+
+                switch (input)
                 {
-                    switch (input)
-                    {
-                        case "1":
-                            Console.Clear();
-                            Console.WriteLine("1) Normal Attack");
-                            Console.WriteLine("2) Special Attack");
-                            while (validInput == false)
-                            {
-                                string _input = Console.ReadLine();
-                                switch (_input)
-                                {
-                                    case "1":
-                                        Console.WriteLine("Use Normal Attack");
-                                        player.UseNormalAttack();
-                                        player.UseAttack(target);
-                                        validInput = true;
-                                        break;
-                                    case "2":
-                                        Console.WriteLine("Use Special Attack");
-                                        player.UseSpecialAttack();
-                                        player.UseAttack(target);
-                                        validInput = true;
-                                        break;
-                                    default:
-                                        Console.WriteLine("Invalid Input");
-                                        Console.ReadLine();
-                                        break;
-                                }
-                            }
-                            break;
-                        case "2":
-                            Console.Clear();
-                            Console.WriteLine("Use Skill.");
-                            player.UseClassSkill();
-                            player.UseSkill(player);
-                            break;
-                        default:
-                            Console.WriteLine("Invalid Input");
-                            Console.ReadLine();
-                            break;
-                    }
+                    case "1":
+                        HandleAttackMenu(player, target);
+                        validInput = true;
+                        break;
+
+                    case "2":
+                        Console.Clear();
+                        Console.WriteLine("Used Skill.");
+                        player.UseClassSkill();
+                        player.UseSkill(player);
+                        validInput = true;
+                        break;
+
+                    case "3":
+                        Console.Clear();
+                        Console.WriteLine("Skipped");
+                        validInput = true;
+                        break;
+
+                    default:
+                        Console.WriteLine("Invalid Input");
+                        Console.ReadLine();
+                        break;
                 }
             }
-
         }
         //BattleLoop
         public void StartBattle(ref Player Player, ref Monster Enemy)

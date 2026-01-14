@@ -41,16 +41,16 @@ namespace CSAHW1.MyMonsters
 
         // Class-Specific Methods
         // Attack Methods
-        public int NormalAttack(Entity target)
+        public int NormalAttack(Entity Attacker)
         {
             _damageType = "Physical";
             int amount = atk;
             if (amount < 0) { amount = 0; }
-            target.hp -= amount;
+            Console.WriteLine($"{Attacker.name} Used Normal Attack!");
             return amount;
         }
 
-        public int NecroAttack(Entity target)
+        public int NecroAttack(Entity Attacker)
         {
             if (mp >= 50)
             {
@@ -58,7 +58,7 @@ namespace CSAHW1.MyMonsters
                 int necroDamage = 5;
                 int amount = atk + necroDamage;
                 if (amount < 0) { amount = 0; }
-                target.hp -= amount;
+                Console.WriteLine($"{Attacker.name} Used Necro Attack!");
                 return amount;
             }
             else

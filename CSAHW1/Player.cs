@@ -49,22 +49,22 @@ namespace CSAHW1
 
         // Class-Specific Methods
         // Attack Methods
-        public int NormalAttack(Entity target)
+        public int NormalAttack(Entity Attacker)
         {
             _damageType = "Physical";
             int amount = atk;
             if (amount < 0) { amount = 0; }
-            target.hp -= amount;
             UseAttack -= NormalAttack;
+            Console.WriteLine($"{Attacker.name}Use Normal Attack!");
             return amount;
         }
-        public int DivineStrike(Entity target)
+        public int DivineStrike(Entity Attacker)
         {
             _damageType = "Divine";
             int amount = atk * 2;
             if (amount < 0) { amount = 0; }
-            target.hp -= amount;
             UseAttack -= DivineStrike;
+            Console.WriteLine($"{Attacker.name}Used Divine Strike!");
             return amount;
         }
 
@@ -136,13 +136,13 @@ namespace CSAHW1
 
         // Class-Specific Methods
         // Attack Methods
-        public int NormalAttack(Entity target)
+        public int NormalAttack(Entity Attacker)
         {
             _damageType = "Physical";
             int amount = atk;
             if (amount < 0) { amount = 0; }
-            target.hp -= amount;
             UseAttack -= NormalAttack;
+            Console.WriteLine($"{Attacker.name}Used Normal Attack!");
             return amount;
         }
 
@@ -156,6 +156,7 @@ namespace CSAHW1
                 int amount = atk + necroDamage;
                 if (amount < 0) { amount = 0; }
                 target.hp -= amount;
+                Console.WriteLine("NecroAttack!");
                 return amount;
             }
             else
