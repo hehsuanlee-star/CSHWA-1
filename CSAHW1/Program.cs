@@ -8,8 +8,7 @@ namespace CSAHW1
         {
             GameManager gm = new GameManager();
             Monster angel = new Angel();
-            gm.DiceCompare(gm.player, angel);
-            gm.ShowBattleMenu(gm.player, angel);
+            gm.StartBattle(gm.player, angel);
         }
     }
 }

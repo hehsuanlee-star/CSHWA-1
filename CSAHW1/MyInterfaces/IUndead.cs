@@ -9,7 +9,8 @@ namespace CSAHW1.MyInterfaces
     internal interface IUndead
     {
         string tag { get; set; }
-        public string damageType { get; set; }
+
+        bool hasRevived { get; set; }
         int NecroRevive(Entity target);
         int NecroticRoll(Entity target);
     }

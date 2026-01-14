@@ -15,14 +15,12 @@ namespace CSAHW1.MyMonsters
         private int _hp;
         private int _mp;
         private int _atk;
-        private int maxHP = 100;
-        private int maxMP = 100;
+        public int maxHP = 100;
+        public int maxMP = 100;
         private int baseATK = 10;
-        private string _damageType;
-        public string damageType { get => _damageType; set => _damageType = value;}
         public override int id { get => _id; }
         public override string name { get => _name; }
-        public string tag { get => _tag; set => _tag = value; }
+        public override string tag { get => _tag; set => _tag = value; }
         public override int hp { get => _hp; set => _hp = Math.Max(0, Math.Min(value, maxHP)); }
         public override int mp { get => _mp; set => _mp = Math.Max(0, Math.Min(value, maxMP)); }
         public override int atk { get => _atk; set => _atk = value; }
@@ -42,7 +40,7 @@ namespace CSAHW1.MyMonsters
         // Attack Methods
         public int NormalAttack(Entity Attacker)
         {
-            _damageType = "Physical";
+            UseAttack -= NormalAttack;
             int amount = atk;
             if (amount < 0) { amount = 0; }
             Console.WriteLine($"{Attacker.name} Used Normal Attack!");
@@ -50,20 +48,57 @@ namespace CSAHW1.MyMonsters
         }
         public int DivineStrike(Entity Attacker)
         {
-            _damageType = "Divine";
-            int amount = atk * 2;
-            if (amount < 0) { amount = 0; }
-            Console.WriteLine($"{Attacker.name} Used Divine Strike!");
-            return amount;
+            UseAttack -= DivineStrike;
+            if (Attacker.mp >= 50)
+            {
+                int amount = atk * 2;
+                if (amount < 0) { amount = 0; }
+                Console.WriteLine($"{Attacker.name} Used Divine Strike!");
+                Attacker.mp -= 50;
+                return amount;
+            }
+            else
+            { 
+                Console.WriteLine("Not enough MP!"); 
+                return 0;  
+            }
+        }
+        public override void SetNormalAttack()
+        {
+            UseAttack += NormalAttack;
         }
 
+        public override void SetSpecialAttack()
+        {
+            UseAttack += DivineStrike;
+        }
+        public override void SetClassSkill()
+        {
+            UseSkill += DivineHeal;
+        }
         // Skills
         public int DivineHeal(Entity target)
         {
-            int amount = 20;
-            if (amount < 0) { amount = 0; }
-            target.hp += amount;
-            return amount;
+            UseSkill -= DivineHeal;
+            if (target.hp <= 0)
+            {
+                Console.WriteLine("You Cannot Heal Dead Creatures");
+                return 0;
+            }
+            else if (target.mp >= 50)
+            {
+                UseSkill -= DivineHeal;
+                int amount = 20;
+                if (amount < 0) { amount = 0; }
+                target.hp += amount;
+                target.mp -= 50;
+                return amount;
+            }
+            else
+            {
+                Console.WriteLine("Not Enough MP");
+                return 0;
+            }
         }
         public override void UseRollSkill() 
         {
@@ -72,6 +107,7 @@ namespace CSAHW1.MyMonsters
         public int DivineIntervention(Entity target)
         {
             UseSkill -= DivineIntervention;
+            Console.WriteLine("Used Divine Intervention. Set Roll to 3.");
             int amount = 3;
             return amount;
         }

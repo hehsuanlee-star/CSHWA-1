@@ -67,10 +67,10 @@ namespace CSAHW1
         }
 
         //Menu
-        void HandleAttackMenu(Player player, Entity target)
+        void AttackMenu(Player player, Monster target, out int amount)
         {
             bool validAttack = false;
-
+            amount = 0;
             Console.Clear();
             Console.WriteLine("1) Normal Attack");
             Console.WriteLine("2) Special Attack");
@@ -82,16 +82,16 @@ namespace CSAHW1
                 switch (input)
                 {
                     case "1":
-                        Console.WriteLine("Used Normal Attack");
-                        player.UseNormalAttack();
-                        player.UseAttack(target);
+                        player.SetNormalAttack();
+                        amount = player.UseAttack(player);
+                        DamageCalculation(player, target, amount);
                         validAttack = true;
                         break;
 
                     case "2":
-                        Console.WriteLine("Used Special Attack");
-                        player.UseSpecialAttack();
-                        player.UseAttack(target);
+                        player.SetSpecialAttack();
+                        amount = player.UseAttack(player);
+                        DamageCalculation(player, target, amount);
                         validAttack = true;
                         break;
 
@@ -102,12 +102,49 @@ namespace CSAHW1
                 }
             }
         }
-        public void ShowBattleMenu(Player player, Entity target)
+        void ShowPlayerStats(Player player)
         {
+            Console.WriteLine($"{player.name} has {player.hp} hp and {player.mp} mp!");
+        }
+
+        void ShowEnemyStats(Entity enemy)
+        {
+            Console.WriteLine($"{enemy.name} has {enemy.hp} hp and {enemy.mp} mp!");
+        }
+
+        public void DamageCalculation(Entity attacker, Entity target, int amount)
+        {
+            if (attacker.tag != target.tag)
+            {
+                target.SetWeaknessDamage();
+            }
+            else
+            { 
+                target.SetNormalDamage();
+            }
+            target.TakeDamage(target, amount);
+
+            // check undead revive
+            if (target.tag == "Undead")
+            {
+                if (target.hp <= 0)
+                {
+                    target.SetClassSkill();
+                    target.UseSkill(target);
+                }
+            }
+        }
+        
+        // battle loop
+        public void PlayerBattleLoop(Player player, Monster target)
+        {
+            ShowPlayerStats(player);
+            ShowEnemyStats(target);
             bool validInput = false;
             Console.WriteLine("1) Attack");
             Console.WriteLine("2) Skill");
             Console.WriteLine("3) Skip");
+            int amount;
             while (!validInput)
             {
                 string input = Console.ReadLine();
@@ -115,14 +152,14 @@ namespace CSAHW1
                 switch (input)
                 {
                     case "1":
-                        HandleAttackMenu(player, target);
+                        AttackMenu(player, target, out amount);
                         validInput = true;
                         break;
 
                     case "2":
                         Console.Clear();
                         Console.WriteLine("Used Skill.");
-                        player.UseClassSkill();
+                        player.SetClassSkill();
                         player.UseSkill(player);
                         validInput = true;
                         break;
@@ -140,32 +177,106 @@ namespace CSAHW1
                 }
             }
         }
-        //BattleLoop
-        public void StartBattle(ref Player Player, ref Monster Enemy)
+
+        public void EnemyBattleLoop(Player player, Monster enemy)
         {
-            DiceCompare(Player, Enemy);
+            Console.WriteLine("Enemy Turn");
+            ShowEnemyStats(enemy);
+            int amount;
+            string type = enemy.tag;
+            switch (type) 
+            {
+                case "Divine":
+                    if (enemy.mp >= 50)
+                    {
+                        if (enemy.hp <= 10)
+                        {
+                            enemy.SetClassSkill();
+                            enemy.UseSkill(enemy);
+                        }
+                        else
+                        {
+                            enemy.SetSpecialAttack();
+                            amount = enemy.UseAttack(enemy);
+                            DamageCalculation(enemy, player, amount);
+                        }
+
+                    }
+                    else
+                    {
+                        enemy.SetNormalAttack();
+                        amount = enemy.UseAttack(enemy);
+                        DamageCalculation(enemy, player, amount);
+                    }
+                    break;
+                case "Undead":
+                    if (enemy.mp >= 50)
+                    {
+                            enemy.SetSpecialAttack();
+                            amount = enemy.UseAttack(enemy);
+                    }
+                    else
+                    {
+                        enemy.SetNormalAttack();
+                        amount = enemy.UseAttack(enemy);
+                    }
+                    DamageCalculation(enemy, player, amount);
+                    break;
+            }
+            ShowPlayerStats(player);
+            ShowEnemyStats(enemy);
+        }
+        public void StartBattle(Player player, Monster enemy)
+        {
+            Entity winner;
+            while (true)
+            {
+                winner = DiceCompare(player, enemy);
+                if (winner.name == player.name)
+                {
+                    Console.WriteLine("Player Turn");
+                    PlayerBattleLoop(player, enemy);
+                }
+                else if (winner.name == enemy.name)
+                {
+                    EnemyBattleLoop(player, enemy);
+                }
+
+                if (player.hp <= 0)
+                {
+                    Console.WriteLine("You Died.");
+                    break;
+                }
+
+                if (enemy.hp <= 0)
+                {
+                    Console.WriteLine("Enemy Slain");
+                    player.hp = player.maxHP;
+                    player.mp = player.maxMP;
+                    break;
+                }
+                
+            }
         }
 
-        public Entity DiceCompare(Player Player, Monster Enemy)
+        public Entity DiceCompare(Player player, Monster enemy)
         {
             int a = 0;
             int b = 0;
-            Entity winner = Player;
-            while (true)
+            Entity winner = player;
+            while (a == b)
             {
+                Console.WriteLine("\nRoll Dice to Determine Turn");
                 bool validInput = false;
+                a = player.DiceRoll();
+                b = enemy.EnemyRoll(enemy);
                 while (a == b)
                 {
-                    Console.WriteLine("Commence Dice Roll.");
-                    a = Player.DiceRoll();
-                    b = Enemy.EnemyRoll(Enemy);
-                    if (a == b)
-                    {
-                        Console.WriteLine("No Winner. Redo Dice Roll.");
-                        Console.ReadLine();
-                        Console.Clear();
-                    }
+                    Console.WriteLine("No Winner. Redo Dice Roll.");
+                    a = player.DiceRoll();
+                    b = enemy.EnemyRoll(enemy);
                 }
+
                 // Check Dice Altering
                 while (validInput == false)
                 {
@@ -174,8 +285,8 @@ namespace CSAHW1
                     switch (input)
                     {
                         case "y":
-                            Player.UseRollSkill();
-                            a = Player.UseSkill(Player);
+                            player.UseRollSkill();
+                            a = player.UseSkill(player);
                             Console.WriteLine($"You Rolled {a}");
                             validInput = true;
                             break;
@@ -189,38 +300,34 @@ namespace CSAHW1
                 }
                 // Check Enemy Dice Altering
                 int activationSeed = rand.Next(1, 100);
-                if (Enemy.mp >= 50 && a > b && activationSeed > 25)
+                if (enemy.mp >= 50 && a > b && activationSeed > 25)
                 {
-                    Enemy.UseRollSkill();
-                    b = Enemy.UseSkill(Enemy);
+                    enemy.UseRollSkill();
+                    b = enemy.UseSkill(enemy);
                     Console.WriteLine("Enemy Used Skill.");
-                    Console.WriteLine($"{Enemy.name} Rolled {b}");
+                    Console.WriteLine($"{enemy.name} Rolled {b}");
                 }
 
                 // Calculate Result
                 if (a > b)
                 {
-                    winner = Player;
-                    Console.WriteLine($"{winner.name} wins");
+                    winner = player;
+                    Console.WriteLine($"{winner.name} Wins");
                     return winner;
                 }
                 else if (a < b)
                 {
-                    winner = Enemy;
-                    Console.WriteLine($"{winner.name} wins");
+                    winner = enemy;
+                    Console.WriteLine($"{winner.name} Wins");
                     return winner;
                 }
-
-                Console.WriteLine("No Winner. Roll Recommence.");
-                a = b = 0;
+                else
+                {
+                    Console.WriteLine("No Winner. Roll Recommence.");
+                }
             }
+            throw new InvalidOperationException("DiceCompare exited without determining a winner.");
         }
-        
-        public void PlayerTurn()
-        {
-            Console.WriteLine("Player Turn:");
-        }
-
 
 
     }

@@ -12,18 +12,17 @@ namespace CSAHW1.MyMonsters
         private int _id = 2;
         private string _name;
         private string _tag;
-        private string _damageType;
         private int _hp;
         private int _mp;
         private int _atk;
-        private int maxHP = 50;
-        private int maxMP = 50;
+        public int maxHP = 100;
+        public int maxMP = 100;
         private int baseATK = 10;
+
+        public bool hasRevived { get; set; } = false;
         public override int id { get => _id; }
         public override string name { get => _name; }
-        public string tag { get => _tag; set => _tag = value; }
-
-        public string damageType { get => _damageType; set => _damageType = value; }
+        public override string tag { get => _tag; set => _tag = value; }
         public override int hp { get => _hp; set => _hp = Math.Max(0, Math.Min(value, maxHP)); }
         public override int mp { get => _mp; set => _mp = Math.Max(0, Math.Min(value, maxMP)); }
         public override int atk { get => _atk; set => _atk = value; }
@@ -43,7 +42,7 @@ namespace CSAHW1.MyMonsters
         // Attack Methods
         public int NormalAttack(Entity Attacker)
         {
-            _damageType = "Physical";
+            UseAttack -= NormalAttack;
             int amount = atk;
             if (amount < 0) { amount = 0; }
             Console.WriteLine($"{Attacker.name} Used Normal Attack!");
@@ -52,9 +51,9 @@ namespace CSAHW1.MyMonsters
 
         public int NecroAttack(Entity Attacker)
         {
+            UseAttack -= NecroAttack;
             if (mp >= 50)
             {
-                _damageType = "Necrotic";
                 int necroDamage = 5;
                 int amount = atk + necroDamage;
                 if (amount < 0) { amount = 0; }
@@ -63,35 +62,47 @@ namespace CSAHW1.MyMonsters
             }
             else
             {
-                Console.WriteLine("\n Not Enough MP!");
+                Console.WriteLine("Not Enough MP!");
                 return 0;
             }
         }
 
-        public override void UseNormalAttack()
+        public override void SetNormalAttack()
         {
             UseAttack += NormalAttack;
         }
 
-        public override void UseSpecialAttack()
+        public override void SetSpecialAttack()
         {
             UseAttack += NecroAttack;
         }
-
+        public override void SetClassSkill()
+        {
+            UseSkill += NecroRevive;
+        }
         //Skills
         public int NecroRevive(Entity target)
         {
-            if (target.hp <= 0)
+            UseSkill -= NecroRevive;
+            if (hasRevived == false)
             {
-                target.hp = maxHP;
-                Console.WriteLine($"{target.name} has revived with {hp} hp");
-                return target.hp;
+                if (target.hp <= 0)
+                {
+                    target.hp = maxHP;
+                    Console.WriteLine($"{target.name} has revived with {target.hp} hp");
+                    hasRevived = true;
+                }
+                else
+                {
+                    Console.WriteLine("Revive cannot be used on live entities.");
+                }
             }
-            else 
+            else
             {
-                Console.WriteLine("Revive cannot be used on live entities.");
-                return target.hp;
+                target.hp = 0;
+                Console.WriteLine("Already Revived Once. Cannot Revive Again.");
             }
+            return target.hp;
         }
         public override void UseRollSkill() 
         {
@@ -100,17 +111,10 @@ namespace CSAHW1.MyMonsters
         public int NecroticRoll(Entity target)
         {
             UseSkill -= NecroticRoll;
-            if (mp >= 50)
-            {
-                Random rand = new Random();
-                int amount = rand.Next(1, 6);
-                return amount;
-            }
-            else
-            {
-                Console.WriteLine("\n Not Enough MP!");
-                return 0;
-            }
+            Random rand = new Random();
+            int amount = rand.Next(1, 6);
+            Console.WriteLine("Used Necrotic Roll.");
+            return amount;
         }
     }
 }
