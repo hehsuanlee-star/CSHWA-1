@@ -100,14 +100,14 @@ namespace CSAHW1.MyMonsters
                 return 0;
             }
         }
-        public override void UseRollSkill() 
+        public override void SetRollSkill() 
         {
             UseSkill += DivineIntervention;
         }
         public int DivineIntervention(Entity target)
         {
             UseSkill -= DivineIntervention;
-            Console.WriteLine("Used Divine Intervention. Set Roll to 3.");
+            Console.WriteLine($"{target.name}Used Divine Intervention. Set Roll to 3.");
             int amount = 3;
             return amount;
         }

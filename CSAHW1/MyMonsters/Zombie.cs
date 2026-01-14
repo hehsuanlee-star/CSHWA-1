@@ -104,7 +104,7 @@ namespace CSAHW1.MyMonsters
             }
             return target.hp;
         }
-        public override void UseRollSkill() 
+        public override void SetRollSkill() 
         {
             UseSkill += NecroticRoll;
         }

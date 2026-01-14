@@ -15,8 +15,8 @@ namespace CSAHW1
         private int _hp;
         private int _mp;
         private int _atk;
-        public int maxHP;
-        public int maxMP;
+        public int maxHP = 100;
+        public int maxMP = 100;
         private int baseATK;
         public override string name { get => _name; }
         public override string tag { get => _tag; set => _tag = value; }
@@ -32,9 +32,7 @@ namespace CSAHW1
         private int _hp;
         private int _mp;
         private int _atk;
-        public int maxHP = 100;
-        public int maxMP = 100;
-        private int baseATK = 10;
+        private int baseATK = 20;
         public override string name { get => _name; }
         public override string tag { get => _tag; set => _tag = value; }
         public override int hp { get => _hp; set => _hp = Math.Max(0, Math.Min(value, maxHP)); }
@@ -118,7 +116,7 @@ namespace CSAHW1
             }
         }
 
-        public override void UseRollSkill()
+        public override void SetRollSkill()
         {
             UseSkill += DivineIntervention;
         }
@@ -138,9 +136,7 @@ namespace CSAHW1
         private int _hp;
         private int _mp;
         private int _atk;
-        public int maxHP = 100;
-        public int maxMP = 100;
-        private int baseATK = 10;
+        private int baseATK = 20;
         public bool hasRevived { get; set; } = false;
         public override string name { get => _name; }
         public override string tag { get => _tag; set => _tag = value; }
@@ -227,7 +223,7 @@ namespace CSAHW1
         {
             UseSkill += NecroRevive;
         }
-        public override void UseRollSkill()
+        public override void SetRollSkill()
         {
             UseSkill += NecroticRoll;
         }

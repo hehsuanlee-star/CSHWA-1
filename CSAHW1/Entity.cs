@@ -17,7 +17,7 @@ namespace CSAHW1
         public virtual int mp { get; set; }
         public virtual int atk { get; set; }
 
-        public virtual void UseRollSkill() { }
+        public virtual void SetRollSkill() { }
         public virtual void SetNormalAttack() { }
         public virtual void SetSpecialAttack() { }
         public virtual void SetClassSkill() { }

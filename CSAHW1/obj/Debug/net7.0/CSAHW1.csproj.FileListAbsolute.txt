@@ -28,3 +28,18 @@ C:\Users\User\Desktop\上課資料\Andrew CS\作業\csahw1\CSHWA-1\CSAHW1\obj\De
 C:\Users\User\Desktop\上課資料\Andrew CS\作業\csahw1\CSHWA-1\CSAHW1\obj\Debug\net7.0\CSAHW1.pdb
 C:\Users\User\Desktop\上課資料\Andrew CS\作業\csahw1\CSHWA-1\CSAHW1\obj\Debug\net7.0\CSAHW1.genruntimeconfig.cache
 C:\Users\User\Desktop\上課資料\Andrew CS\作業\csahw1\CSHWA-1\CSAHW1\obj\Debug\net7.0\ref\CSAHW1.dll
+C:\Users\Sam\Desktop\hw\CSHWA-1\CSAHW1\bin\Debug\net7.0\CSAHW1.exe
+C:\Users\Sam\Desktop\hw\CSHWA-1\CSAHW1\bin\Debug\net7.0\CSAHW1.deps.json
+C:\Users\Sam\Desktop\hw\CSHWA-1\CSAHW1\bin\Debug\net7.0\CSAHW1.runtimeconfig.json
+C:\Users\Sam\Desktop\hw\CSHWA-1\CSAHW1\bin\Debug\net7.0\CSAHW1.dll
+C:\Users\Sam\Desktop\hw\CSHWA-1\CSAHW1\bin\Debug\net7.0\CSAHW1.pdb
+C:\Users\Sam\Desktop\hw\CSHWA-1\CSAHW1\obj\Debug\net7.0\CSAHW1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Sam\Desktop\hw\CSHWA-1\CSAHW1\obj\Debug\net7.0\CSAHW1.AssemblyInfoInputs.cache
+C:\Users\Sam\Desktop\hw\CSHWA-1\CSAHW1\obj\Debug\net7.0\CSAHW1.AssemblyInfo.cs
+C:\Users\Sam\Desktop\hw\CSHWA-1\CSAHW1\obj\Debug\net7.0\CSAHW1.csproj.CoreCompileInputs.cache
+C:\Users\Sam\Desktop\hw\CSHWA-1\CSAHW1\obj\Debug\net7.0\CSAHW1.sourcelink.json
+C:\Users\Sam\Desktop\hw\CSHWA-1\CSAHW1\obj\Debug\net7.0\CSAHW1.dll
+C:\Users\Sam\Desktop\hw\CSHWA-1\CSAHW1\obj\Debug\net7.0\refint\CSAHW1.dll
+C:\Users\Sam\Desktop\hw\CSHWA-1\CSAHW1\obj\Debug\net7.0\CSAHW1.pdb
+C:\Users\Sam\Desktop\hw\CSHWA-1\CSAHW1\obj\Debug\net7.0\CSAHW1.genruntimeconfig.cache
+C:\Users\Sam\Desktop\hw\CSHWA-1\CSAHW1\obj\Debug\net7.0\ref\CSAHW1.dll

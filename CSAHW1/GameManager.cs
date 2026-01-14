@@ -14,6 +14,7 @@ namespace CSAHW1
     internal class GameManager
     {
         private static readonly Random rand = new Random();
+        private MonsterManager mm = new MonsterManager();
         public Player player { get => _player ; set => _player = value; }
         private Player _player; 
         //init
@@ -226,37 +227,41 @@ namespace CSAHW1
             ShowPlayerStats(player);
             ShowEnemyStats(enemy);
         }
-        public void StartBattle(Player player, Monster enemy)
+        public void StartBattle(Player player)
         {
-            Entity winner;
-            while (true)
+            while (mm.LiveMonsters.Count > 0)
             {
-                winner = DiceCompare(player, enemy);
-                if (winner.name == player.name)
+                player.hp = player.maxHP;
+                player.mp = player.maxMP;
+                Monster enemy = mm.GenerateMonster(mm);
+                Console.WriteLine($"Encountered {enemy.name}. Ready to Fight.");
+
+                while (player.hp > 0 && enemy.hp > 0)
                 {
-                    Console.WriteLine("Player Turn");
-                    PlayerBattleLoop(player, enemy);
-                }
-                else if (winner.name == enemy.name)
-                {
-                    EnemyBattleLoop(player, enemy);
+                    Entity winner = DiceCompare(player, enemy);
+
+                    if (winner == player)
+                    {
+                        Console.WriteLine("Player Turn");
+                        PlayerBattleLoop(player, enemy);
+                    }
+                    else
+                    {
+                        EnemyBattleLoop(player, enemy);
+                    }
                 }
 
                 if (player.hp <= 0)
                 {
+                    player.hp = 0;
                     Console.WriteLine("You Died.");
-                    break;
+                    return; // End battle system entirely
                 }
 
-                if (enemy.hp <= 0)
-                {
-                    Console.WriteLine("Enemy Slain");
-                    player.hp = player.maxHP;
-                    player.mp = player.maxMP;
-                    break;
-                }
-                
+                Console.WriteLine("Enemy Slain");
+                mm.MonsterOnDeath(enemy,mm);
             }
+            Console.WriteLine("All monsters defeated!");
         }
 
         public Entity DiceCompare(Player player, Monster enemy)
@@ -285,7 +290,7 @@ namespace CSAHW1
                     switch (input)
                     {
                         case "y":
-                            player.UseRollSkill();
+                            player.SetRollSkill();
                             a = player.UseSkill(player);
                             Console.WriteLine($"You Rolled {a}");
                             validInput = true;
@@ -302,7 +307,7 @@ namespace CSAHW1
                 int activationSeed = rand.Next(1, 100);
                 if (enemy.mp >= 50 && a > b && activationSeed > 25)
                 {
-                    enemy.UseRollSkill();
+                    enemy.SetRollSkill();
                     b = enemy.UseSkill(enemy);
                     Console.WriteLine("Enemy Used Skill.");
                     Console.WriteLine($"{enemy.name} Rolled {b}");
@@ -328,7 +333,5 @@ namespace CSAHW1
             }
             throw new InvalidOperationException("DiceCompare exited without determining a winner.");
         }
-
-
     }
 }
